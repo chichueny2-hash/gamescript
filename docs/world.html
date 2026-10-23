@@ -2,15 +2,15 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
 <style>
-/* Layout: one reading column of manuscript-like sections on a night ground; gold marks what is canon, blue what is hidden. */
+/* Layout: one reading column of manuscript-like sections on a night ground; gold marks canon, blue marks what is hidden, red marks erasure. */
 :root{
   --bg:#0c1122; --panel:#141b33; --panel2:#1a2342; --ink:#ece6d4; --muted:#a49f8f; --line:#2b3558;
-  --gold:#cdb27a; --blue:#86aee0; --red:#d98282; --green:#8fc7a0;
+  --gold:#cdb27a; --blue:#86aee0; --red:#d98282; --green:#8fc7a0; --salt:#e9e4d6;
   --display:"Noto Serif TC","Songti TC",serif; --body:"Noto Sans TC","PingFang TC",system-ui,sans-serif;
   color-scheme:dark;
 }
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.75}
-.wrap{max-width:880px;margin:0 auto;padding-block:40px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:52px}
+.wrap{max-width:900px;margin:0 auto;padding-block:40px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:52px}
 h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
 h1{font-size:clamp(30px,6.5vw,46px);letter-spacing:.1em}
 h2{font-size:22px;letter-spacing:.04em}
@@ -23,22 +23,27 @@ section{display:flex;flex-direction:column;gap:16px}
 .thesis{border:1px solid var(--gold);border-radius:8px;padding:22px;background:var(--panel);display:flex;flex-direction:column;gap:12px}
 .thesis .big{font-family:var(--display);font-size:clamp(22px,4.8vw,30px);color:var(--gold)}
 .thesis .q{font-family:var(--display);font-size:18px}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.pair div{background:var(--panel2);border-radius:6px;padding:10px 12px;font-size:14px}
-.pair b{color:var(--blue);display:block;font-size:12px;letter-spacing:.1em}
+.thesis blockquote{margin:0;border-left:2px solid var(--gold);padding-left:12px;font-family:var(--display);color:var(--ink)}
+.thesis blockquote small{display:block;font-family:var(--body);font-size:12px;color:var(--muted)}
 .src{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
-.card ul{margin:0;padding-left:18px;font-size:14px;color:var(--muted)}
-.card ul b{color:var(--ink);font-weight:500}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:2px 10px;color:var(--muted)}
-.flow{display:flex;align-items:stretch;gap:0;overflow-x:auto;padding-bottom:4px}
-.node{flex:1 0 140px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:4px}
+.book{display:flex;flex-direction:column;gap:1px;font-size:13px;padding:6px 0;border-top:1px dashed var(--line)}
+.book:first-of-type{border-top:0}
+.book b{font-weight:500}
+.book span{color:var(--muted)}
+.flow{display:flex;align-items:stretch;overflow-x:auto;padding-bottom:4px}
+.node{flex:1 0 128px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:4px}
 .node b{font-family:var(--display);font-size:16px}
 .node span{font-size:13px;color:var(--muted)}
-.arr{flex:0 0 26px;display:grid;place-items:center;color:var(--gold);font-size:18px}
 .node.cost{border-color:var(--red)} .node.cost b{color:var(--red)}
-.tl{position:relative;display:flex;flex-direction:column;gap:0;border-left:2px solid var(--line);margin-left:6px}
+.node.salt{border-color:var(--salt)} .node.salt b{color:var(--salt)}
+.node.key{border-color:var(--blue)} .node.key b{color:var(--blue)}
+.arr{flex:0 0 24px;display:grid;place-items:center;color:var(--gold);font-size:18px}
+.rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.rule{background:var(--panel2);border-radius:8px;padding:12px 14px;font-size:14px;display:flex;flex-direction:column;gap:4px}
+.rule b{font-family:var(--display);font-size:15px}
+.rule i{font-style:normal;font-size:12px;color:var(--muted)}
+.tl{display:flex;flex-direction:column;border-left:2px solid var(--line);margin-left:6px}
 .ev{position:relative;padding:0 0 14px 20px;display:grid;grid-template-columns:96px 1fr;gap:12px}
 .ev::before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--gold)}
 .ev.erase::before{border-color:var(--red);background:var(--red)}
@@ -47,17 +52,13 @@ section{display:flex;flex-direction:column;gap:16px}
 .ev .t i{font-style:normal;color:var(--muted);font-size:12px;margin-left:6px}
 .legend{font-size:12px;color:var(--muted)}
 .legend .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--red);vertical-align:middle;margin-right:4px}
-.factions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.fac dl{margin:0;display:grid;grid-template-columns:44px 1fr;gap:4px 8px;font-size:14px}
-.fac dt{color:var(--muted);font-size:12px;padding-top:2px}
-.fac dd{margin:0}
-.fac .who{font-size:12px;color:var(--gold)}
 .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
-table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:14px}
 th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
 th{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:.06em;background:var(--panel)}
 td:first-child{font-family:var(--display);font-weight:700;white-space:nowrap}
 td.secret{color:var(--blue)}
+td.dune{color:var(--muted);font-size:13px}
 tr:last-child td{border-bottom:0}
 .bar{display:flex;height:34px;border-radius:6px;overflow:hidden;font-size:12px}
 .bar div{display:grid;place-items:center;color:#0c1122;font-weight:700;white-space:nowrap;overflow:hidden}
@@ -67,21 +68,22 @@ tr:last-child td{border-bottom:0}
 .act .h b{font-family:var(--display);font-size:18px}
 .act .h span{font-size:12px;color:var(--muted)}
 .act p{font-size:14px}
+.act .epi{font-family:var(--display);font-size:14px;color:var(--gold);margin-bottom:6px}
 .act .key{margin-top:6px;font-size:13px;color:var(--muted)}
-.ends{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ends{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .end{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:6px;font-size:14px}
 .end.pick{border-color:var(--gold)}
 .end .tag{font-size:12px;color:var(--muted)}
 .end.pick .tag{color:var(--gold)}
 .foot{font-size:12px;color:var(--muted)}
-@media (max-width:680px){.src,.ends{grid-template-columns:1fr}.factions{grid-template-columns:1fr}.act{grid-template-columns:1fr}.pair{grid-template-columns:1fr}.ev{grid-template-columns:72px 1fr}}
+@media (max-width:700px){.src,.rules,.ends{grid-template-columns:1fr}.act{grid-template-columns:1fr}.ev{grid-template-columns:72px 1fr}}
 </style>
 
 <div class="wrap">
 <header>
-  <p class="eyebrow">WORLD &amp; OUTLINE</p>
+  <p class="eyebrow">WORLD &amp; OUTLINE · 第三版</p>
   <h1>月下的歸途</h1>
-  <p class="sub">世界觀與大綱（重建版）。取材自十部日式 RPG，以及埃及、法國、英國的歷史。</p>
+  <p class="sub">取材自埃及、法國、英國史學著作各十本，十部日式 RPG，以及《沙丘》的群像方法。</p>
 </header>
 
 <section>
@@ -89,49 +91,56 @@ tr:last-child td{border-bottom:0}
     <p class="eyebrow">核心命題</p>
     <p class="big">誰掌握記錄，誰就掌握現實。</p>
     <p class="q">全劇要問的是：該記住什麼，又該放下什麼？</p>
-    <div class="pair">
-      <div><b>國家</b>為了和平而遺忘罪行，還是為了正義而記住仇恨？</div>
-      <div><b>個人</b>抹去創傷，還是把失去整合進自己的故事？</div>
+    <blockquote>「名字不屬於書，屬於唸出它的人。」<small>聖女伊莎被抹去的最後之歌，終幕才完整出現</small></blockquote>
+  </div>
+</section>
+
+<section>
+  <div><p class="eyebrow">三十本書</p><h2>每段歷史，給了世界一條規則</h2></div>
+  <div class="src">
+    <div class="card"><h3>埃及</h3>
+      <div class="book"><b>阿斯曼《文化記憶》</b><span>活人記憶只撐三代 → 三代法則</span></div>
+      <div class="book"><b>阿斯曼《摩西與埃及人》</b><span>被抹去的會變形回來 → 沉默之海</span></div>
+      <div class="book"><b>庫尼《成為法老的女人》</b><span>抹除是政治，不是仇恨 → 瑟伊恩</span></div>
+      <div class="book"><b>克萊因《公元前 1177 年》</b><span>系統崩潰 → 諾亞的未來</span></div>
+      <div class="book"><b>麥克道爾《古埃及的村莊生活》</b><span>陶片上的日常 → 慢熱的收集品</span></div>
+    </div>
+    <div class="card"><h3>法國</h3>
+      <div class="book"><b>勒華拉杜里《蒙塔尤》</b><span>迫害者的檔案保存了受害者 → 抹除簿</span></div>
+      <div class="book"><b>布洛克《國王神蹟》</b><span>權威是被相信出來的 → 立名禮</span></div>
+      <div class="book"><b>迪芬多夫《十字架之下》</b><span>屠殺的兇手是鄰居 → 聖燭之夜</span></div>
+      <div class="book"><b>托克維爾《舊制度與大革命》</b><span>改革開始時才會爆發</span></div>
+      <div class="book"><b>戴維斯《馬丁·蓋爾歸來》</b><span>身份是他人的承認</span></div>
+    </div>
+    <div class="card"><h3>英國</h3>
+      <div class="book"><b>克蘭奇《從記憶到書面記錄》</b><span>文書的權威是建構的 → 名冊</span></div>
+      <div class="book"><b>巴克《1381》</b><span>起義者燒毀檔案 → 北境燒名冊</span></div>
+      <div class="book"><b>達菲《祭壇的剝除》</b><span>唸誦死者之名被禁 → 艾瑟島國</span></div>
+      <div class="book"><b>鐵伊《時間的女兒》</b><span>人人相信卻沒發生的歷史</span></div>
+      <div class="book"><b>湯普森《英國工人階級的形成》</b><span>拯救失敗者 → 瑪莉安的歌</span></div>
     </div>
   </div>
+  <p class="sub">每國另外五本與完整筆記，見倉庫 references/書單與讀書筆記.md</p>
 </section>
 
 <section>
-  <div><p class="eyebrow">取材</p><h2>三段歷史，各給了世界一層</h2></div>
-  <div class="src">
-    <div class="card"><h3>埃及：地基</h3><ul>
-      <li><b>名字即存在</b>：鑿去名字是第二次死亡</li>
-      <li><b>阿肯那頓被抹除</b>：史上第一次除名</li>
-      <li><b>瑪阿特</b>：靠記錄維持的秩序</li>
-      <li><b>青銅時代崩潰</b>、羅塞塔石碑</li></ul></div>
-    <div class="card"><h3>法國：教會與王權</h3><ul>
-      <li><b>聖女貞德</b>：被利用、燒死、再封聖</li>
-      <li><b>聖殿騎士團</b>：因王室債務被剿滅</li>
-      <li><b>瘋王查理六世</b>、聖巴托羅繆婚禮屠殺</li>
-      <li><b>舊制度</b>的稅與破產</li></ul></div>
-    <div class="card"><h3>英國：繼承與階級</h3><ul>
-      <li><b>玫瑰戰爭</b>：瘋王與攝政之爭</li>
-      <li><b>1381 農民起義</b>：背信的赦免</li>
-      <li><b>都鐸宣傳</b>：勝利者寫的歷史</li>
-      <li><b>解散修道院</b>、圈地運動</li></ul></div>
-  </div>
-  <div class="chips">
-    <span class="chip">幻水 II：兩個都對的人</span><span class="chip">FF VI：中段崩塌與重聚</span><span class="chip">FF 戰略版：教會改寫聖人</span>
-    <span class="chip">格蘭蒂亞 II：神早已死去</span><span class="chip">超時空之鑰：未來是選擇的結果</span><span class="chip">空之軌跡：日常下的政治暗流</span>
-    <span class="chip">皇家騎士團 2：沒有乾淨的抉擇</span><span class="chip">歧路旅人：群像要有交集</span><span class="chip">DQ V：平靜敘述的重量</span><span class="chip">異度裝甲：哲學化為規則</span>
-  </div>
-</section>
-
-<section>
-  <div><p class="eyebrow">世界的規則</p><h2>名冊、祝福與裂隙</h2></div>
+  <div><p class="eyebrow">世界的規則</p><h2>白鹽、名冊、祝福、沉默之海</h2></div>
   <div class="flow" role="list">
-    <div class="node" role="listitem"><b>名冊</b><span>寫入或抹去名字，世人的記憶就跟著改變</span></div>
+    <div class="node salt" role="listitem"><b>白鹽</b><span>北境出產，書寫名冊唯一的墨</span></div>
     <div class="arr" aria-hidden="true">→</div>
-    <div class="node cost" role="listitem"><b>祝福</b><span>唯一能書寫名冊的力量；代價是祝福者自己的記憶</span></div>
+    <div class="node" role="listitem"><b>名冊</b><span>寫入或抹去名字，世人的記憶跟著改變</span></div>
     <div class="arr" aria-hidden="true">→</div>
-    <div class="node" role="listitem"><b>沉默之海</b><span>三百年來被抹去的記憶都沉積在這裡，正在滿溢</span></div>
+    <div class="node cost" role="listitem"><b>祝福</b><span>唯一能書寫名冊的力量；代價是自己的記憶</span></div>
     <div class="arr" aria-hidden="true">→</div>
-    <div class="node" role="listitem"><b>裂隙</b><span>通往這個世界的八個「可能的未來」</span></div>
+    <div class="node" role="listitem"><b>沉默之海</b><span>被抹去的記憶沉積於此，正在滿溢</span></div>
+    <div class="arr" aria-hidden="true">→</div>
+    <div class="node" role="listitem"><b>裂隙</b><span>通往八個可能的未來</span></div>
+  </div>
+  <div class="rules">
+    <div class="rule"><b>三代法則</b>活人記得的事抹不乾淨，所以名冊院最怕活著的證人。<i>阿斯曼</i></div>
+    <div class="rule"><b>抹除簿</b>每抹去一個名字，原文都要秘密登記。抹除者保存了被抹除者。<i>勒華拉杜里</i></div>
+    <div class="rule"><b>權威來自信任</b>人們不再相信名冊的那一刻，它就開始失效。<i>布洛克、克蘭奇</i></div>
+    <div class="rule"><b>魔法變強是病兆</b>沉默之海越滿，祝福者越多，教會的壟斷越鬆動。<i>馬丁</i></div>
   </div>
 </section>
 
@@ -139,46 +148,50 @@ tr:last-child td{border-bottom:0}
   <div><p class="eyebrow">歷史年表</p><h2>一部不斷被抹去的歷史</h2></div>
   <div class="tl">
     <div class="ev"><span class="y">約前 2000</span><span class="t">雙冠王統一阿瑪拉，以「衡之書」記錄萬民之名<i>上下埃及統一</i></span></div>
-    <div class="ev erase"><span class="y">約前 1300</span><span class="t">太陽王阿肯改革失敗，被從書中抹去<i>阿肯那頓</i></span></div>
-    <div class="ev"><span class="y">約前 1100</span><span class="t">海民之災，阿瑪拉崩潰<i>青銅時代崩潰</i></span></div>
-    <div class="ev"><span class="y">聖曆元年</span><span class="t">先知帶殘卷北上，創立聖名教會</span></div>
-    <div class="ev"><span class="y">612–728</span><span class="t">雙冠戰爭：瓦倫與艾瑟的百年戰爭<i>百年戰爭</i></span></div>
-    <div class="ev erase"><span class="y">705</span><span class="t">聖女伊莎被燒死，遺言被抹去；26 年後封聖<i>貞德</i></span></div>
-    <div class="ev"><span class="y">1001</span><span class="t">灰衣騎士修會因王室債務被剿滅，修道院荒廢（日後的據點）<i>聖殿騎士團</i></span></div>
-    <div class="ev"><span class="y">1004</span><span class="t">灰疫，人口少了三分之一<i>黑死病</i></span></div>
+    <div class="ev erase"><span class="y">約前 1300</span><span class="t">太陽王阿肯被抹去，以「瘟疫之王」的傳說變形流傳<i>阿肯那頓</i></span></div>
+    <div class="ev"><span class="y">約前 1100</span><span class="t">海民之災，阿瑪拉崩潰<i>公元前 1177 年</i></span></div>
+    <div class="ev"><span class="y">聖曆元年</span><span class="t">聖名教會創立，發現北境白鹽能書寫名冊</span></div>
+    <div class="ev"><span class="y">612–728</span><span class="t">雙冠戰爭：對外的百年戰爭，也是內戰<i>百年戰爭</i></span></div>
+    <div class="ev erase"><span class="y">705</span><span class="t">聖女伊莎被自己人出賣、燒死，最後之歌被抹去<i>貞德</i></span></div>
+    <div class="ev"><span class="y">約 730 起</span><span class="t">聖歌院的三百年計畫：血統譜與北境預言<i>比·吉斯特</i></span></div>
+    <div class="ev"><span class="y">948</span><span class="t">艾瑟島國與教會決裂，禁止唸誦死者名字<i>宗教改革</i></span></div>
+    <div class="ev"><span class="y">1001</span><span class="t">國王剿滅債主灰衣騎士修會，修道院荒廢（日後的據點）<i>聖殿騎士團</i></span></div>
     <div class="ev erase"><span class="y">1009</span><span class="t">卡爾斯村被屠，事後抹除<i>阿爾比十字軍</i></span></div>
-    <div class="ev erase"><span class="y">1016</span><span class="t">北境起義，赦免承諾被背棄，屠殺被抹除<i>1381 農民起義</i></span></div>
+    <div class="ev erase"><span class="y">1016</span><span class="t">北境起義燒毀名冊抄本；赦免承諾被背棄，屠殺被抹除<i>1381 農民起義</i></span></div>
     <div class="ev"><span class="y">1020</span><span class="t">國王發瘋，深信自己是玻璃做的<i>查理六世</i></span></div>
-    <div class="ev"><span class="y">1028</span><span class="t"><b>故事開始</b>：攝政之爭，立名禮將冊立王儲</span></div>
+    <div class="ev"><span class="y">1028</span><span class="t"><b>故事開始</b>：立名禮將冊立王儲</span></div>
   </div>
   <p class="legend"><span class="dot"></span>紅點：被名冊抹去的事件</p>
 </section>
 
 <section>
-  <div><p class="eyebrow">勢力</p><h2>每一方都有道理，也都有代價</h2></div>
-  <div class="factions">
-    <div class="card fac"><h3>王后派</h3><span class="who">王后伊莎蓓爾</span><dl><dt>想要</dt><dd>讓六歲的兒子被立為王儲</dd><dt>道理</dt><dd>繼承戰爭的敗者，孩子活不下來</dd><dt>代價</dt><dd>收買、暗殺、抹除</dd></dl></div>
-    <div class="card fac"><h3>公爵派</h3><span class="who">王弟昂德魯公爵</span><dl><dt>想要</dt><dd>證明幼王非親生，自己攝政</dd><dt>道理</dt><dd>能幹的改革者，平民的救星</dd><dt>代價</dt><dd>他正是北境屠殺的下令者</dd></dl></div>
-    <div class="card fac"><h3>名冊院</h3><span class="who">大書記長瑟伊恩</span><dl><dt>想要</dt><dd>抹去各派仇恨，換取和平</dd><dt>道理</dt><dd>記憶讓仇恨延續百年。他部分是對的</dd><dt>代價</dt><dd>受害者永遠得不到正義</dd></dl></div>
-    <div class="card fac"><h3>金秤商會</h3><span class="who">會長奧古斯特（莉茲之父）</span><dl><dt>想要</dt><dd>收回王室欠款，出售贖名券</dd><dt>道理</dt><dd>沒有商會，就沒有軍餉和糧食</dd><dt>代價</dt><dd>記憶成了商品</dd></dl></div>
-    <div class="card fac"><h3>艾瑟島國</h3><span class="who">島國女王</span><dl><dt>想要</dt><dd>削弱教會，讓瓦倫內耗</dd><dt>道理</dt><dd>被教會開除，至今仍受威脅</dd><dt>代價</dt><dd>暗中資助叛亂，戰火延燒</dd></dl></div>
-    <div class="card fac"><h3>北境殘黨</h3><span class="who">赤腳傳道人約拿</span><dl><dt>想要</dt><dd>讓被抹去的屠殺重新被記住</dd><dt>道理</dt><dd>他們是真正的受害者</dd><dt>代價</dt><dd>正義需要另一場流血</dd></dl></div>
-  </div>
+  <div><p class="eyebrow">計中計</p><h2>每一方都有表面的計畫，和真正的計畫</h2></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>誰</th><th>對主角團說的</th><th>真正的計畫</th><th>為什麼說得通</th></tr></thead>
+    <tbody>
+      <tr><td>院長瑪格達</td><td>「保護她，送她到王都。」</td><td class="secret">讓希雅打開名冊，聖歌院取代名冊院</td><td>聖歌者世代被消耗，她們想奪回命運</td></tr>
+      <tr><td>大書記長瑟伊恩</td><td>「我只想要和平。」</td><td class="secret">大遺忘：抹去繼承之爭與北境屠殺</td><td>記憶讓仇恨延續百年。他部分是對的</td></tr>
+      <tr><td>王后伊莎蓓爾</td><td>「我只想保護我的孩子。」</td><td class="secret">抹去兒子出身的疑點；失敗就逃往艾瑟</td><td>繼承戰爭的敗者，孩子活不下來</td></tr>
+      <tr><td>昂德魯公爵</td><td>「我要改革這個國家。」</td><td class="secret">以白鹽斷供逼名冊院就範</td><td>能幹的改革者，卻是屠殺的下令者</td></tr>
+      <tr><td>會長奧古斯特</td><td>「生意就是生意。」</td><td class="secret">兩邊下注，與名冊院合賣贖名券</td><td>沒有商會，就沒有軍餉和糧食</td></tr>
+      <tr><td>神父安塞姆</td><td>「我會為你們禱告。」</td><td class="secret">妹妹被挾持，為刺客開門，卻暗中救下希雅的日記</td><td>被脅迫的背叛者（對照《沙丘》的悅醫生）</td></tr>
+    </tbody>
+  </table></div>
 </section>
 
 <section>
-  <div><p class="eyebrow">主角團</p><h2>八個人，各握真相的一角</h2></div>
+  <div><p class="eyebrow">主角團</p><h2>八個機構的節點</h2></div>
   <div class="tablewrap"><table>
-    <thead><tr><th>角色</th><th>歷史原型</th><th>心結</th><th>秘密</th></tr></thead>
+    <thead><tr><th>角色</th><th>出身機構</th><th>心結</th><th>秘密</th><th>《沙丘》對照</th></tr></thead>
     <tbody>
-      <tr><td>凱倫</td><td>農民起義的遺孤</td><td>為父親的遺願而活</td><td class="secret">那個遺願是被改寫的記憶</td></tr>
-      <tr><td>希雅</td><td>聖女貞德</td><td>笑著承擔一切</td><td class="secret">她是卡爾斯屠村的倖存者</td></tr>
-      <tr><td>薇菈</td><td>伽利略</td><td>逃進研究</td><td class="secret">她發現沉默之海即將滿溢</td></tr>
-      <tr><td>葛雷</td><td>「只是服從命令」</td><td>只會服從</td><td class="secret">他參與了卡爾斯清剿，把希雅交給了教會</td></tr>
-      <tr><td>莉茲</td><td>聖巴托羅繆的新娘</td><td>什麼都不敢選</td><td class="secret">她握有商會的贖名券黑帳</td></tr>
-      <tr><td>諾亞</td><td>崩潰後的倖存者</td><td>對一切說「不」</td><td class="secret">他來自這個世界崩潰後的未來</td></tr>
-      <tr><td>托爾</td><td>瓦特·泰勒的同伴</td><td>被戰爭記憶困住</td><td class="secret">他記得南方人都說「沒發生過」的屠殺</td></tr>
-      <tr><td>瑪莉安</td><td>都鐸宮廷詩人</td><td>活在掌聲裡</td><td class="secret">她找到了聖女被抹去的最後之歌</td></tr>
+      <tr><td>凱倫</td><td>自由傭兵團</td><td>為父親的遺願而活</td><td class="secret">那個遺願是被植入的記憶</td><td class="dune">鄧肯的忠誠，但是被植入的</td></tr>
+      <tr><td>希雅</td><td>聖歌院</td><td>笑著承擔一切</td><td class="secret">卡爾斯的倖存者；預言為她準備了救世主的位置</td><td class="dune">保羅＋潔西卡</td></tr>
+      <tr><td>薇菈</td><td>星環學院</td><td>逃進研究</td><td class="secret">算出沉默之海一年內潰堤</td><td class="dune">列特·凱恩斯</td></tr>
+      <tr><td>葛雷</td><td>聖名騎士團</td><td>只會服從</td><td class="secret">把卡爾斯唯一的倖存者交給了教會</td><td class="dune">葛尼＋杜菲</td></tr>
+      <tr><td>莉茲</td><td>金秤商會</td><td>什麼都不敢選</td><td class="secret">握有贖名券黑帳</td><td class="dune">伊如蘭（政治婚姻）</td></tr>
+      <tr><td>諾亞</td><td>未來</td><td>對一切說「不」</td><td class="secret">來自崩潰後的未來</td><td class="dune">保羅的預知困境</td></tr>
+      <tr><td>托爾</td><td>北境礦工公會</td><td>被戰爭記憶困住</td><td class="secret">第一個喊出「聖女轉世」的人</td><td class="dune">斯第爾格</td></tr>
+      <tr><td>瑪莉安</td><td>王廷</td><td>活在掌聲裡</td><td class="secret">民謠裡藏著伊莎之歌的碎片</td><td class="dune">伊如蘭（歷史書寫者）</td></tr>
     </tbody>
   </table></div>
 </section>
@@ -189,23 +202,23 @@ tr:last-child td{border-bottom:0}
     <div style="flex:10;background:#6f7ea3">序</div><div style="flex:35;background:var(--gold)">第一幕 旅途</div><div style="flex:25;background:var(--red)">第二幕 王都</div><div style="flex:25;background:var(--blue)">第三幕 裂隙</div><div style="flex:5;background:var(--green)"></div>
   </div>
   <div class="acts">
-    <div class="act"><div class="h"><b>序章</b><span>春</span></div><div><p>八人各一段短序章，只有日常與心結。凱倫接下一份酬勞高得不尋常的護送委託。</p></div></div>
-    <div class="act"><div class="h"><b>旅途</b><span>春→秋</span></div><div><p>護送希雅前往王都。原本半個月的路，走了半年。趕路、紮營、做菜、接委託；政治只從傳聞和敵方視角的插曲裡滲進來。</p><p class="key">據點建立 · 祝福的代價 · 北境的記憶與南方的遺忘 · 第一道裂隙</p></div></div>
-    <div class="act"><div class="h"><b>王都</b><span>冬</span></div><div><p>各派拉攏主角團，真相一層層揭開，同伴之間也一道道裂開。莉茲的婚禮變成屠殺之夜；凱倫擊倒仇人，才知道父親的遺言是假的。</p><p class="key">聖燭之夜 · 立名禮 · 名冊碎裂、天空撕裂</p></div></div>
-    <div class="act"><div class="h"><b>裂隙</b><span>冬→春</span></div><div><p>八人散落在八個未來，每個未來都是某一派理念的極端，也映照一個人的心結。他們一個一個把彼此找回來。</p><p class="key">諾亞揭曉：未來不是注定的</p></div></div>
-    <div class="act"><div class="h"><b>月下</b><span>春分滿月</span></div><div><p>面對由三百年被抹去的記憶聚成的「無名者」。</p></div></div>
+    <div class="act"><div class="h"><b>序章</b><span>春</span></div><div><p class="epi">「那個春天，沒有人知道一份護送委託會改變一個王國的記憶。」</p><p>八人各一段短序章，只有日常與心結。</p></div></div>
+    <div class="act"><div class="h"><b>旅途</b><span>春→秋</span></div><div><p class="epi">「他們說那年冬天什麼都沒發生。那麼，我的兄弟是怎麼死的？」</p><p>護送希雅前往王都，走了半年。趕路、紮營、做菜、接委託；政治只從傳聞和敵方插曲裡滲進來。北境奉希雅為聖女轉世，托爾第一個喊出口。</p><p class="key">據點建立 · 祝福的代價 · 北境記得、南方遺忘 · 第一道裂隙</p></div></div>
+    <div class="act"><div class="h"><b>王都</b><span>冬</span></div><div><p class="epi">「那一夜，殺人的不是士兵。是麵包師、鄰居、唱詩班的孩子。」</p><p>計中計逐層翻開，同伴互相猜疑。婚禮變成屠殺之夜；凱倫擊倒仇人，才知道父親的遺言是假的。立名禮上，希雅第一次說「我不想」。</p><p class="key">聖燭之夜 · 立名禮 · 名冊碎裂</p></div></div>
+    <div class="act"><div class="h"><b>裂隙</b><span>冬→春</span></div><div><p class="epi">「我見過這個村子。在我的世界裡，它已經沒有名字了。」</p><p>八人散落在八個未來，各是一派理念的極端。托爾的未來，是以希雅之名打了一百年的聖戰。</p><p class="key">諾亞揭曉：未來由小失敗累積而成，每一環都能改變</p></div></div>
+    <div class="act"><div class="h"><b>月下</b><span>春分滿月</span></div><div><p>在名冊院地下找到抹除簿，面對三百年被抹去的記憶聚成的「無名者」。</p></div></div>
   </div>
 </section>
 
 <section>
   <div><p class="eyebrow">終幕抉擇</p><h2>名冊的命運</h2></div>
   <div class="ends">
-    <div class="end"><span class="tag">瑟伊恩的路</span><b>抹去一切</b><p>和平，但所有罪行都沒有發生過。</p></div>
+    <div class="end"><span class="tag">瑟伊恩的路</span><b>抹去一切</b><p>和平，但所有罪行都沒發生過。</p></div>
     <div class="end"><span class="tag">托爾一度想走的路</span><b>恢復一切</b><p>正義，但百年仇恨同時回來。</p></div>
-    <div class="end pick"><span class="tag">主角團的路</span><b>由人們自己講述</b><p>希雅打開名冊，記憶回到每個人身上；瑪莉安唱出聖女的最後之歌。希雅失去了幾乎全部的記憶。</p></div>
+    <div class="end"><span class="tag">院長與預言的路</span><b>奉希雅為聖女</b><p>回聲之谷：以她為名的百年聖戰。</p></div>
+    <div class="end pick"><span class="tag">主角團的路</span><b>把名字還給唸它的人</b><p>用抹除簿歸還被抹去的名字；瑪莉安唱完伊莎之歌。希雅失去幾乎全部記憶，同伴每晚把她的故事講還給她。</p></div>
   </div>
-  <p class="sub">招募的協力者越多，被找回的記憶越能化為證詞，而不是新的復仇。尾聲中，七個同伴每晚把希雅的故事講還給她。</p>
 </section>
 
-<p class="foot">完整文字版見倉庫：bible/世界觀.md、bible/大綱.md、references/歷史研究.md、references/JRPG劇本研究.md</p>
+<p class="foot">完整文字版見倉庫：bible/世界觀.md、bible/大綱.md、references/書單與讀書筆記.md、references/沙丘人物群像研究.md</p>
 </div>
