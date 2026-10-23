@@ -1,0 +1,175 @@
+<title>劇本構想總覽</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+/* Layout: a single narrow reading column; each section is one idea with one picture. Moonlight motif from the references. */
+:root{
+  --bg:#eef1f6; --surface:#ffffff; --ink:#1a2233; --muted:#5b6578; --line:#d5dbe6;
+  --accent:#a8741f; --cool:#3f6e8c; --soft:#e4e9f1;
+  --a1:#7a8aa3; --a2:#3f6e8c; --a3:#a8741f;
+  --display:"Noto Serif TC","Songti TC","SimSun",serif;
+  --body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121826; --surface:#1a2233; --ink:#e6eaf2; --muted:#9aa5ba; --line:#2c3850;
+  --accent:#e0b25c; --cool:#7fb0cf; --soft:#212b3f;
+  --a1:#8d9bb3; --a2:#7fb0cf; --a3:#e0b25c; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#121826; --surface:#1a2233; --ink:#e6eaf2; --muted:#9aa5ba; --line:#2c3850;
+  --accent:#e0b25c; --cool:#7fb0cf; --soft:#212b3f;
+  --a1:#8d9bb3; --a2:#7fb0cf; --a3:#e0b25c; color-scheme:dark }
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.75}
+.wrap{max-width:760px;margin:0 auto;padding-block:40px 64px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;gap:44px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0;font-weight:700}
+h1{font-size:clamp(28px,6vw,40px);line-height:1.25}
+h2{font-size:22px;line-height:1.4}
+.eyebrow{font-size:12px;letter-spacing:.12em;color:var(--muted);margin:0 0 6px}
+p{margin:0}
+section{display:flex;flex-direction:column;gap:16px}
+.thesis{font-family:var(--display);font-size:clamp(19px,4.2vw,24px);line-height:1.6;border-left:3px solid var(--accent);padding-left:16px}
+.thesis small{display:block;font-family:var(--body);font-size:13px;color:var(--muted);margin-top:6px}
+
+/* reference → act mapping */
+.acts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.act{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.act .no{font-size:12px;letter-spacing:.1em;font-weight:700}
+.act h3{margin:0;font-family:var(--display);font-size:17px;line-height:1.4}
+.act .ref{font-size:12px;color:var(--muted)}
+.act .where{font-size:13px;background:var(--soft);border-radius:6px;padding:6px 8px}
+.act:nth-child(1) .no{color:var(--a1)} .act:nth-child(2) .no{color:var(--a2)} .act:nth-child(3) .no{color:var(--a3)}
+
+/* pacing chart */
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 8px 4px;overflow-x:auto}
+.chart svg{display:block;width:100%;min-width:520px;height:auto}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:18px;height:3px;border-radius:2px;vertical-align:middle;margin-right:6px}
+
+/* worlds */
+.worlds{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.world{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.world b{font-family:var(--display);font-size:16px}
+.world .tag{font-size:12px;color:var(--cool);font-weight:500}
+.world span:last-child{font-size:13px;color:var(--muted)}
+
+/* rules */
+.rules{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.rules li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start}
+.rules .ic{width:28px;height:28px;border-radius:50%;background:var(--soft);color:var(--accent);display:grid;place-items:center;font-weight:700;font-size:13px}
+.rules b{display:block}
+.rules span{color:var(--muted);font-size:14px}
+
+.ask{background:var(--surface);border:1px solid var(--accent);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.ask ol{margin:0;padding-left:20px;display:grid;gap:6px}
+.foot{font-size:12px;color:var(--muted)}
+
+@media (max-width:560px){.acts{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">遊戲劇本 · 構想總覽</p>
+  <h1>劍與魔法，走過一個個平行時空</h1>
+</header>
+
+<section>
+  <p class="eyebrow">一句話主題</p>
+  <p class="thesis">不必拋下過去，也不必為別人而活；<br>在與他人的關係裡，重寫屬於自己的故事。
+    <small>表層是奇幻冒險，內裡寫當代人的精神困境</small></p>
+</section>
+
+<section>
+  <div><p class="eyebrow">三幕弧線</p><h2>三部參考作品，正好是主角的三個階段</h2></div>
+  <div class="acts">
+    <div class="act">
+      <span class="no">第一幕</span>
+      <h3>為他人而活</h3>
+      <span class="ref">參考《邊緣行者》：David 一直背著別人的夢想</span>
+      <span class="where">劍與魔法本世界<br>從一份小委託開始</span>
+    </div>
+    <div class="act">
+      <span class="no">第二幕</span>
+      <h3>想為自己而活，卻墜入虛無</h3>
+      <span class="ref">參考《炎拳》：仇人都倒下了，絕望還在</span>
+      <span class="where">穿越平行時空<br>一個時空一種困境</span>
+    </div>
+    <div class="act">
+      <span class="no">第三幕</span>
+      <h3>在關係中重寫自己</h3>
+      <span class="ref">參考《再見繪梨》：不能改變失去，但能選擇如何告別</span>
+      <span class="where">回到本世界<br>苦樂參半的結局</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div><p class="eyebrow">節奏</p><h2>參考《格蘭蒂亞 2》：慢熱，娓娓道來</h2></div>
+  <div class="chart" role="img" aria-label="情緒強度曲線：慢熱型緩慢爬升、小幅起伏，對比情緒化展開的劇烈起落">
+    <svg viewBox="0 0 640 230" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="var(--line)" stroke-width="1">
+        <line x1="40" y1="190" x2="620" y2="190"/>
+        <line x1="233" y1="20" x2="233" y2="190" stroke-dasharray="3 4"/>
+        <line x1="427" y1="20" x2="427" y2="190" stroke-dasharray="3 4"/>
+      </g>
+      <g font-size="12" fill="var(--muted)" font-family="var(--body)">
+        <text x="136" y="212" text-anchor="middle">第一幕</text>
+        <text x="330" y="212" text-anchor="middle">第二幕</text>
+        <text x="523" y="212" text-anchor="middle">第三幕</text>
+        <text x="34" y="30" text-anchor="end">強</text>
+        <text x="34" y="188" text-anchor="end">弱</text>
+      </g>
+      <path d="M40 120 L90 40 L130 170 L180 30 L220 175 L270 35 L310 165 L360 25 L400 170 L450 30 L500 160 L560 20 L620 150"
+            fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4 4" opacity=".55"/>
+      <path d="M40 175 C90 172 120 166 160 160 S220 150 250 146 S300 128 330 124 S380 104 410 98 S470 76 500 70 S560 44 585 40 S610 70 620 96"
+            fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="585" cy="40" r="5" fill="var(--accent)"/>
+      <g font-size="12" fill="var(--ink)" font-family="var(--body)">
+        <text x="60" y="160">日常、委託、旅伴閒談</text>
+        <text x="300" y="112">真相分層揭開</text>
+        <text x="520" y="30" text-anchor="end">唯一的高峰</text>
+      </g>
+    </svg>
+  </div>
+  <div class="legend">
+    <span><i style="background:var(--accent)"></i>本作：緩慢爬升，只在終盤到頂</span>
+    <span><i style="background:var(--muted)"></i>情緒化展開：頻繁大起大落（不採用）</span>
+  </div>
+</section>
+
+<section>
+  <div><p class="eyebrow">平行時空</p><h2>每個時空，是一種當代的精神困境</h2></div>
+  <div class="worlds">
+    <div class="world"><b>幻夢之境</b><span class="tag">逃進幻想</span><span>沉迷螢幕與虛擬，現實越來越薄</span></div>
+    <div class="world"><b>同質之城</b><span class="tag">隨波逐流</span><span>人人活得一樣，把「我是誰」交給人群</span></div>
+    <div class="world"><b>定軌之國</b><span class="tag">一眼望到頭</span><span>人生劇本早已寫死，沒有岔路</span></div>
+    <div class="world"><b>岔路迷宮</b><span class="tag">選擇焦慮</span><span>可能太多，害怕被定型，哪條都不走完</span></div>
+    <div class="world"><b>微笑之鎮</b><span class="tag">封藏</span><span>人人笑著，沒有人說出痛苦</span></div>
+    <div class="world"><b>不願之國</b><span class="tag">擺爛</span><span>對一切說「我不願意」，直到什麼都不剩</span></div>
+  </div>
+  <p class="foot">各時空的人物，都是主角「可能變成的樣子」；時空裡的敵人，是角色內心恐懼的投影。</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">寫作守則</p><h2>五條規矩</h2></div>
+  <ul class="rules">
+    <li><span class="ic">慢</span><div><b>慢熱，不煽情</b><span>情緒靠累積，不靠爆點；重要的話留在營火旁的閒談裡</span></div></li>
+    <li><span class="ic">輕</span><div><b>輕鬆拌嘴裡藏伏筆</b><span>旅伴日常要有趣，沉重的主題才不會壓垮玩家</span></div></li>
+    <li><span class="ic">映</span><div><b>支線映照主線</b><span>每條支線都是主題的另一種答案</span></div></li>
+    <li><span class="ic">空</span><div><b>復仇要落空</b><span>讓玩家也以為「打倒他就好了」，再讓這個念頭落空，作為中期的轉折</span></div></li>
+    <li><span class="ic">做</span><div><b>不灌雞湯</b><span>療癒來自親身經歷和小小的行動，不靠角色講道理</span></div></li>
+  </ul>
+</section>
+
+<section class="ask">
+  <h2>需要你決定</h2>
+  <ol>
+    <li>三幕弧線的方向，認同嗎？</li>
+    <li>六個平行時空，有想加的、想刪的嗎？</li>
+    <li>結局：苦樂參半，還是更暗或更亮？</li>
+  </ol>
+</section>
+
+<p class="foot">詳細分析見倉庫 references/ 資料夾。</p>
+</div>
