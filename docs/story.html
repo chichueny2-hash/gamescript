@@ -38,8 +38,16 @@ h2{margin:0;font-size:22px;font-weight:700;letter-spacing:.06em}
 .box p{margin:0}
 .box::after{content:"▼";position:absolute;right:12px;bottom:4px;font-size:10px;color:var(--gold);animation:blink 1.2s steps(2) infinite}
 @keyframes blink{50%{opacity:0}}
+.cast{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.card{background:linear-gradient(180deg,var(--box1),var(--box2));border:1px solid var(--gold-dim);border-radius:6px;padding:12px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.card canvas{width:48px;height:56px;image-rendering:pixelated;align-self:center}
+.card b{font-size:17px;letter-spacing:.08em;text-align:center}
+.card .role{font-size:12px;color:var(--gold);text-align:center}
+.card .woe{font-size:13px;color:var(--muted);line-height:1.6;text-align:center}
+.note{font-size:13px;color:var(--muted);text-align:center;margin:0}
 .foot{font-size:12px;color:var(--muted);text-align:center;line-height:1.8}
 @media (prefers-reduced-motion:reduce){.box::after{animation:none}}
+@media (max-width:640px){.cast{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:480px){.box{font-size:15px;padding:12px 16px 18px}}
 </style>
 
@@ -48,49 +56,65 @@ h2{margin:0;font-size:22px;font-weight:700;letter-spacing:.06em}
     <span class="kicker">STORY CONCEPT</span>
     <h1>月下的歸途</h1>
     <div class="orn">✦</div>
-    <p class="lede">劇情概要圖片故事。畫面風格參考《八方旅人》的 HD-2D：像素人物、景深模糊、柔和光暈。</p>
+    <p class="lede">群像版劇情概要。八名主角各有自己的故事，主角團可以換人。畫面風格參考《八方旅人》的 HD-2D：像素人物、景深模糊、柔和光暈。</p>
   </header>
 
+
   <section class="panel">
-    <div class="head"><span class="chap">CHAPTER 1</span><h2>邊境的委託</h2></div>
-    <div class="stage" data-scene="town"><canvas class="base"></canvas><canvas class="blur"></canvas><canvas class="fx"></canvas></div>
-    <div class="box"><p>邊境小鎮的傭兵凱倫，背著亡父「成為王國騎士」的遺願，靠接委託過活。</p></div>
+    <div class="head"><span class="chap">PARTY</span><h2>八名主角</h2></div>
+    <div class="cast">
+      <div class="card"><canvas data-who="0" width="12" height="14"></canvas><b>凱倫</b><span class="role">邊境傭兵</span><span class="woe">為亡父的遺願而活</span></div>
+      <div class="card"><canvas data-who="1" width="12" height="14"></canvas><b>希雅</b><span class="role">沉默的聖歌者</span><span class="woe">笑著承擔一切</span></div>
+      <div class="card"><canvas data-who="2" width="12" height="14"></canvas><b>薇菈</b><span class="role">逃亡的學者</span><span class="woe">逃進研究與幻想</span></div>
+      <div class="card"><canvas data-who="3" width="12" height="14"></canvas><b>葛雷</b><span class="role">前教團騎士</span><span class="woe">只會服從命令</span></div>
+      <div class="card"><canvas data-who="4" width="12" height="14"></canvas><b>莉茲</b><span class="role">商會之女</span><span class="woe">什麼都不敢選</span></div>
+      <div class="card"><canvas data-who="5" width="12" height="14"></canvas><b>諾亞</b><span class="role">裂隙少年</span><span class="woe">對一切說「不」</span></div>
+      <div class="card"><canvas data-who="6" width="12" height="14"></canvas><b>托爾</b><span class="role">北境礦工</span><span class="woe">被戰爭記憶困住</span></div>
+      <div class="card"><canvas data-who="7" width="12" height="14"></canvas><b>瑪莉安</b><span class="role">吟遊詩人</span><span class="woe">活在別人的掌聲裡</span></div>
+    </div>
+    <p class="note">另有協力者 30 人，可招募到據點，各有短篇支線。</p>
   </section>
 
   <section class="panel">
-    <div class="head"><span class="chap">CHAPTER 2</span><h2>沉默的聖歌者</h2></div>
-    <div class="stage" data-scene="road"><canvas class="base"></canvas><canvas class="blur"></canvas><canvas class="fx"></canvas></div>
-    <div class="box"><p>一份再普通不過的委託：護送一位沉默的少女聖歌者，前往遠方的王都。</p></div>
+    <div class="head"><span class="chap">CHAPTER 1</span><h2>八條路的交會</h2></div>
+    <div class="stage" data-scene="town"><canvas class="base"></canvas><canvas class="blur"></canvas><canvas class="fx"></canvas></div>
+    <div class="box"><p>傭兵、聖歌者、逃亡學者、前騎士……八個人各自背著自己的理由，在邊境小鎮的同一份委託前相遇。</p></div>
+  </section>
+
+  <section class="panel">
+    <div class="head"><span class="chap">CHAPTER 2</span><h2>據點</h2></div>
+    <div class="stage" data-scene="base"><canvas class="base"></canvas><canvas class="blur"></canvas><canvas class="fx"></canvas></div>
+    <div class="box"><p>邊境的廢棄修道院成了他們的據點。同伴和協力者越聚越多，這裡慢慢成了所有人的家。</p></div>
   </section>
 
   <section class="panel">
     <div class="head"><span class="chap">CHAPTER 3</span><h2>營火旁</h2></div>
     <div class="stage" data-scene="camp"><canvas class="base"></canvas><canvas class="blur"></canvas><canvas class="fx"></canvas></div>
-    <div class="box"><p>同行的旅伴漸漸多了。夜裡圍著營火閒談、拌嘴，每個人也都藏著不說出口的心事。</p></div>
+    <div class="box"><p>每晚的營火旁，隊伍組合不同，聊的話題也不同。和誰同行，就會聽見誰的心事。</p></div>
   </section>
 
   <section class="panel">
     <div class="head"><span class="chap">CHAPTER 4</span><h2>祝福的代價</h2></div>
     <div class="stage" data-scene="bless"><canvas class="base"></canvas><canvas class="blur"></canvas><canvas class="fx"></canvas></div>
-    <div class="box"><p>少女能治癒他人。代價是，每救一個人，她就失去一點自己的記憶。</p></div>
+    <div class="box"><p>聖歌者希雅能治癒他人。代價是，每救一個人，她就失去一點自己的記憶。</p></div>
   </section>
 
   <section class="panel">
-    <div class="head"><span class="chap">CHAPTER 5</span><h2>復仇之後</h2></div>
+    <div class="head"><span class="chap">CHAPTER 5</span><h2>分崩離析</h2></div>
     <div class="stage" data-scene="revenge"><canvas class="base"></canvas><canvas class="blur"></canvas><canvas class="fx"></canvas></div>
-    <div class="box"><p>凱倫終於擊倒殺父仇人，教團騎士長。他以為人生會就此重新開始，心裡卻比以前更空。</p></div>
+    <div class="box"><p>凱倫擊倒了殺父仇人騎士長，卻沒有迎來解脫。隨之揭開的真相讓同伴們互相猜疑，隊伍第一次分崩離析。</p></div>
   </section>
 
   <section class="panel">
     <div class="head"><span class="chap">CHAPTER 6</span><h2>裂隙</h2></div>
     <div class="stage" data-scene="rift"><canvas class="base"></canvas><canvas class="blur"></canvas><canvas class="fx"></canvas></div>
-    <div class="box"><p>天空裂開，一行人被捲入一個個平行時空：人人長得一樣的城市、劇本早已寫死的國度、人人笑著卻沒人訴苦的小鎮。每個世界的居民，都像凱倫某種可能的未來。</p></div>
+    <div class="box"><p>天空裂開，八人被拋進八個不同的平行時空。每個世界都映照著一個人的心結：人人一樣的城市、劇本寫死的國度、人人笑著卻沒人訴苦的小鎮……</p></div>
   </section>
 
   <section class="panel">
     <div class="head"><span class="chap">FINAL</span><h2>月下的告別</h2></div>
     <div class="stage" data-scene="moon"><canvas class="base"></canvas><canvas class="blur"></canvas><canvas class="fx"></canvas></div>
-    <div class="box"><p>拯救世界，還是守住她？凱倫無法改變失去，卻能決定如何告別，並第一次為自己活下去。</p></div>
+    <div class="box"><p>走出各自的時空，他們一個一個把彼此拉了回來。沒有人能改變失去，但這一次，故事的結局由八個人一起寫完。</p></div>
   </section>
 
   <p class="foot">畫面為程式繪製的像素示意圖，用來傳達氛圍，不是正式美術。</p>
@@ -131,6 +155,16 @@ const GIRL={w:'#eef0ff',s:'#f6dcc8',e:'#3a4a7a',r:'#e6e4f6',k:'#9aa0c0'};
 const BIG={h:'#1e1e1e',s:'#c89068',e:'#111111',c:'#6a4a2a',b:'#7a8a5a',p:'#3a3a2a',k:'#222222'};
 const WITCH={t:'#5a2a6a',h:'#c86a3a',s:'#f0c8a0',e:'#2a1a10',m:'#7a3a8a',k:'#2a2020'};
 const KNT={a:'#9aa0aa',v:'#20242a',R:'#8a1f24',k:'#40444a'};
+const CAST=[
+  {rows:HUMAN,pal:HERO,sword:1},{rows:MAIDEN,pal:GIRL},{rows:MAGE,pal:WITCH},
+  {rows:HUMAN,pal:{h:'#3a3a3a',s:'#d8a888',e:'#111111',c:'#5a5f6a',b:'#9aa0aa',p:'#40444a',k:'#2a2a2a'},sword:1},
+  {rows:MAIDEN,pal:{w:'#e8c060',s:'#f6dcc8',e:'#3a5a3a',r:'#3f8a5a',k:'#5a3a20'}},
+  {rows:HUMAN,pal:{h:'#e8e8f0',s:'#e8d0c0',e:'#6a3aa0',c:'#3a2a5a',b:'#2a2238',p:'#1e1a28',k:'#141018'}},
+  {rows:HUMAN,pal:{h:'#a0482a',s:'#d8a080',e:'#1a1010',c:'#6a5a4a',b:'#8a6a4a',p:'#4a3a2a',k:'#2a2018'}},
+  {rows:MAGE,pal:{t:'#2a7a7a',h:'#e0a0b0',s:'#f6dcc8',e:'#2a2a3a',m:'#c05a6a',k:'#3a2a2a'}}
+];
+function member(p,i,x,y,flip,tint){const m=CAST[i];const pal=tint?shade(m.pal,tint[0],tint[1]):m.pal;p.shadow(x,y+12,8);p.sprite(m.rows,pal,x,y,flip);
+  if(m.sword){const sx=flip?x-1:x+8;p.rect(sx,y+4,1,7,tint?mix('#d0d8e0',tint[0],tint[1]):'#d0d8e0')}}
 function hero(p,x,y,flip,pal=HERO){p.shadow(x,y+12,8);p.sprite(HUMAN,pal,x,y,flip);p.rect(flip?x-1:x+8,y+4,1,7,'#d0d8e0');p.px(flip?x-1:x+8,y+4,'#b08a3a')}
 function girl(p,x,y,flip,pal=GIRL){p.shadow(x,y+12,8);p.sprite(MAIDEN,pal,x,y,flip)}
 
@@ -157,22 +191,31 @@ const SCENES={
     p.rect(128,82,2,24,'#4a3020');p.rect(146,82,2,24,'#4a3020');p.rect(124,79,28,15,'#7a5434');
     p.rect(126,81,7,8,'#efe6cc');p.rect(135,82,5,6,'#e8dcc0');p.rect(142,81,7,9,'#f0e8d0');p.px(129,82,'#a03030');p.px(144,82,'#a03030');
     p.rect(110,72,1,34,'#2a2020');p.rect(108,69,5,4,'#ffd27a');p.rect(108,68,5,1,'#2a2020');L.push({x:110.5,y:71,r:26,c:'255,200,120',fl:1});
+    member(p,3,92,97,false);member(p,4,62,99,false);member(p,6,184,99,true);member(p,1,154,98,true);
     hero(p,134,97,true);
     return {type:'dust',col:'255,214,160',n:28};
   },
-  road(p,L){
-    p.grad(0,74,['#3a64a8','#5f90cc','#9cc4e6','#d8ecf6']);
-    cloud(p,30,18,22);cloud(p,150,12,26);cloud(p,205,30,18);
-    p.ridge(66,5,'#9ab8cf',31,80);
-    const cx=196;p.rect(cx-14,52,28,16,'#7a8cae');[cx-14,cx-3,cx+10].forEach((tx,i)=>{const th=i===1?22:16;p.rect(tx,68-th,5,th,'#6a7ca0');for(let j=0;j<5;j++)p.rect(tx+2-Math.floor(j/2),68-th-5+j,1+2*Math.floor(j/2),1,'#4a5a80')});
-    p.ridge(76,6,'#6f9a64',21);p.ridge(90,8,'#5a8550',22);
-    p.rect(0,98,W,H-98,'#4f7a45');p.noise(0,80,W,H-80,['#5f8f50','#46703e'],.12,23);
-    for(let y=74;y<H;y++){const k=(y-74)/(H-74);const c=120+Math.sin(k*3.2)*28*k;const hw=1.5+k*20;p.rect(c-hw,y,hw*2,1,'#c0a274');p.px(c-hw,y,'#9a7e56');p.px(c+hw,y,'#9a7e56')}
-    p.noise(0,96,W,H-96,['#f0d070','#e88aa0','#ffffff'],.015,24);
-    tree(p,26,104,1.2);tree(p,58,92,.8);tree(p,214,110,1.3);
-    girl(p,124,104,false);hero(p,110,103,false);
-    L.push({x:20,y:4,r:80,c:'255,240,200'});
-    return {type:'pollen',col:'255,250,220',n:26};
+  base(p,L){
+    p.grad(0,84,['#4a74b0','#7fa6d6','#b8d4ec','#f0e0c0']);
+    cloud(p,24,16,22);cloud(p,186,22,24);
+    p.ridge(78,6,'#8fa8bf',31,90);
+    p.ridge(94,10,'#5a8550',22);p.rect(0,100,W,H-100,'#4f7a45');p.noise(0,90,W,H-90,['#5f8f50','#46703e'],.12,23);
+    const st='#b4ab9a',dk='#968d7d';
+    p.rect(78,58,80,36,st);for(let y=60;y<94;y+=5)p.rect(78,y,80,1,dk);
+    for(let j=0;j<18;j++){const ins=Math.round((17-j)*44/18);p.rect(74+ins,40+j,88-2*ins,1,j%3?'#4a5266':'#3a4256')}
+    p.rect(150,24,18,70,st);for(let y=28;y<94;y+=5)p.rect(150,y,18,1,dk);
+    for(let j=0;j<14;j++){const w=Math.round(j*.7);p.rect(159-w,10+j,1+2*w,1,'#3a4256')}
+    p.rect(156,32,6,8,'#2a2a36');p.px(158,34,'#e0c060');
+    p.rect(168,30,1,14,'#3a2a20');p.rect(169,30,8,6,'#a03030');p.px(172,32,'#e0c060');p.px(173,33,'#e0c060');
+    [[90,66],[110,66],[130,66]].forEach(([x,y],i)=>{p.rect(x,y,7,10,'#3a3a48');p.rect(x+1,y-1,5,1,'#3a3a48');if(i!==1){p.rect(x+1,y+1,5,8,'#ffd27a');L.push({x:x+3.5,y:y+5,r:12,c:'255,200,110',fl:1})}});
+    p.rect(114,80,10,14,'#4a2e1e');
+    for(let x=60;x<=84;x+=6)p.rect(x,56,1,38,'#8a6a42');for(let y=60;y<94;y+=8)p.rect(60,y,25,1,'#8a6a42');
+    for(let y=94;y<H;y++){const hw=5+(y-94)*.35;p.rect(119-hw,y,hw*2,1,'#c0a274')}
+    p.rect(64,99,5,4,'#8a6a42');p.rect(186,104,6,5,'#8a6a42');p.rect(193,106,5,3,'#a07a4a');
+    member(p,0,104,98,false);member(p,1,128,98,true);member(p,6,68,92,false);member(p,2,176,100,true);
+    member(p,4,150,108,true);member(p,7,40,104,false);member(p,3,200,92,true);member(p,5,88,110,false);
+    L.push({x:225,y:6,r:85,c:'255,236,200'});
+    return {type:'pollen',col:'255,250,220',n:22};
   },
   camp(p,L){
     p.grad(0,100,['#070b1e','#0f1734','#1c2650','#2a3566']);
@@ -181,9 +224,9 @@ const SCENES={
     p.rect(0,98,W,H-98,'#1b2526');p.noise(0,98,W,H-98,['#222e2e','#151d1e'],.25,6);
     [[8,104,34],[24,102,26],[204,104,30],[222,103,38],[238,102,28]].forEach(([x,g,h])=>pine(p,x,g,h,'#0b1222'));
     for(let y=-6;y<=6;y++)for(let x=-30;x<=30;x++)if((x*x)/900+(y*y)/36<=1)p.px(120+x,112+y,mix('#1b2526','#4a3220',1-Math.sqrt((x*x)/900+(y*y)/36)));
-    p.sprite(MAGE,WITCH,102,90,false);p.shadow(102,102,8);
-    p.sprite(HUMAN,BIG,130,90,true);p.shadow(130,102,8);
-    hero(p,92,100,false);girl(p,140,100,true);
+    member(p,2,96,90,false);member(p,7,108,88,false);member(p,4,124,88,true);member(p,6,136,90,true);
+    member(p,3,78,96,false);member(p,5,154,96,true);
+    member(p,0,90,101,false);member(p,1,142,101,true);
     p.rect(113,113,14,2,'#5a3a22');p.rect(115,111,10,2,'#6a4428');
     const fl=[[0,0,'#ff5a20'],[1,0,'#ff5a20'],[2,0,'#ff8a30'],[3,0,'#ff5a20'],[4,0,'#ff5a20'],[1,-1,'#ff8a30'],[2,-1,'#ffd060'],[3,-1,'#ff8a30'],[1,-2,'#ff8a30'],[2,-2,'#ffd060'],[3,-2,'#ff8a30'],[2,-3,'#ffd060'],[2,-4,'#fff0b0'],[1,-3,'#ff5a20'],[3,-3,'#ff8a30'],[2,-5,'#ff8a30']];
     fl.forEach(([dx,dy,c])=>p.px(118+dx,110+dy,c));
@@ -227,7 +270,8 @@ const SCENES={
     pts.forEach((pt,i)=>{if(!i)return;const [ax,ay]=pts[i-1],[bx,by]=pt;for(let s=0;s<=10;s++){const x=ax+(bx-ax)*s/10,y=ay+(by-ay)*s/10;p.rect(x,y,1,2,'#f4eaff')}if(i%3===0)L.push({x:bx,y:by,r:18,c:'210,170,255',fl:3})});
     p.ridge(110,5,'#0e0818',9);
     const dark=c=>({h:c,s:c,e:c,c:c,b:c,p:c,k:c,w:c,r:c,t:c,m:c});
-    p.sprite(HUMAN,dark('#0a0612'),104,99,false);p.sprite(MAIDEN,dark('#0a0612'),114,99,false);p.sprite(MAGE,dark('#0a0612'),124,99,true);p.sprite(HUMAN,dark('#0a0612'),134,99,true);
+    const glow=['120,170,255','255,220,240','200,140,255','190,190,210','140,240,170','230,120,255','255,150,90','255,210,120'];
+    [14,44,76,104,134,164,194,222].forEach((x,i)=>{const m=CAST[i];p.sprite(m.rows,dark('#0a0612'),x,99,i%2===1);L.push({x:x+4,y:104,r:14,c:glow[i],fl:3})});
     return {type:'rift',col:'215,180,255',n:30,pts:pts};
   },
   moon(p,L){
@@ -239,8 +283,8 @@ const SCENES={
     p.ridge(100,6,'#16264a',13);
     for(let x=0;x<W;x++){const h=Math.round(100+Math.min(30,Math.pow((x-90)/60,2)*18));p.rect(x,h,1,H-h,'#0f1a30')}
     p.noise(0,100,W,H-100,['#18284a','#0c1528'],.08,14);
-    const sh=t=>[shade(HERO,'#0f1a30',t),shade(GIRL,'#0f1a30',t)];const [hp,gp]=sh(.45);
-    hero(p,82,88,false,hp);girl(p,92,88,true,gp);
+    const hill=x=>Math.round(100+Math.min(30,Math.pow((x-90)/60,2)*18));
+    [6,3,2,0,1,4,7,5].forEach((who,k)=>{const x=52+k*10;member(p,who,x,hill(x+4)-12,k>=4,['#0f1a30',.42])});
     return {type:'firefly',col:'210,255,170',n:16};
   }
 };
@@ -279,6 +323,7 @@ function drawFx(st,t){
   c.globalCompositeOperation='source-over';
 }
 
+document.querySelectorAll('canvas[data-who]').forEach(cv=>{const p=painter(cv.getContext('2d'));p.sprite(CAST[+cv.dataset.who].rows,CAST[+cv.dataset.who].pal,2,1,false);if(CAST[+cv.dataset.who].sword)p.rect(10,5,1,7,'#d0d8e0')});
 const stages=[...document.querySelectorAll('.stage')].map(el=>{
   const base=el.querySelector('.base'),blur=el.querySelector('.blur'),fx=el.querySelector('.fx');
   base.width=blur.width=W;base.height=blur.height=H;
