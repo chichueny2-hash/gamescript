@@ -76,12 +76,20 @@ tr:last-child td{border-bottom:0}
 .end .tag{font-size:12px;color:var(--muted)}
 .end.pick .tag{color:var(--gold)}
 .foot{font-size:12px;color:var(--muted)}
+.wonder .who{font-size:12px;color:var(--gold);letter-spacing:.06em}
+.wonder p.feel{font-size:13px;color:var(--ink);border-left:2px solid var(--line);padding-left:10px}
+.prophecy{font-family:var(--display);font-size:18px;line-height:2;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px 22px}
+.prophecy span{display:block}
+.prophecy .planted{color:var(--gold)}
+.prophecy .unknown{color:var(--blue)}
+.prophecy .disputed{color:var(--red)}
+.dead{color:var(--red);font-size:12px;margin-left:6px;font-family:var(--body);font-weight:500}
 @media (max-width:700px){.src,.rules,.ends{grid-template-columns:1fr}.act{grid-template-columns:1fr}.ev{grid-template-columns:72px 1fr}}
 </style>
 
 <div class="wrap">
 <header>
-  <p class="eyebrow">WORLD &amp; OUTLINE · 第四版</p>
+  <p class="eyebrow">WORLD &amp; OUTLINE · 第五版</p>
   <h1>月下的歸途</h1>
   <p class="sub">一個以名字與記憶治國的王國，和八個各自背著心事的旅人。</p>
 </header>
@@ -129,9 +137,21 @@ tr:last-child td{border-bottom:0}
 </section>
 
 <section>
+  <div><p class="eyebrow">奇觀與體感</p><h2>每個地方，都從站在那裡的一個人開始</h2></div>
+  <div class="src">
+    <div class="card wonder"><h3>鹽之大聖堂</h3><p class="sub">礦工三百年在鹽山腹中鑿出的聖堂：鹽雕的吊燈，四壁刻滿死者的名字，包括被名冊抹去的。北境自己的名冊。</p><span class="who">第一天下礦的學徒</span><p class="feel">舔一口牆是鹹的。牆上刻著父親的名字，他用手指描了一遍。</p></div>
+    <div class="card wonder"><h3>北門的頭顱</h3><p class="sub">用白鹽醃過，十二年不腐，臉還認得出來。北境的孩子說它晚上會聽人說話。</p><span class="who">守門的老兵</span><p class="feel">十二年面對面，分不清自己在看守它，還是被它看守。</p></div>
+    <div class="card wonder"><h3>冬裂</h3><p class="sub">名冊是一整座鹽石板書庫。每抹去一個名字，就有一塊石板裂開，全城都聽得見。</p><span class="who">年輕的書吏</span><p class="feel">每次聽到冬裂，他都停筆數一下，假裝自己沒有在數。</p></div>
+    <div class="card wonder"><h3>頂棚街</h3><p class="sub">國王怕水，王宮到名冊院的街道全加了頂棚，整條中軸線終年不見天日。</p><span class="who">替國王撐傘的少年侍從</span><p class="feel">他從沒在王都見過太陽。聽見雨聲就發抖，因為下雨天國王會哭。</p></div>
+    <div class="card wonder"><h3>灰衣修道院</h3><p class="sub">能坐兩百人的長桌上，還留著一副沒收走的銀餐具。那場太奢華的宴會，痕跡還在。</p><span class="who">凱倫，第一夜</span><p class="feel">他數了數椅子，想像兩百個人同時舉杯的聲音。</p></div>
+    <div class="card wonder"><h3>沉默之海</h3><p class="sub">包圍世界的灰色之海，被抹去的記憶都沉在這裡。</p><span class="who">諾亞</span><p class="feel">海沒有聲音。浪打上來的不是水，是別人的名字。</p></div>
+  </div>
+</section>
+
+<section>
   <div><p class="eyebrow">歷史年表</p><h2>一部不斷被抹去的歷史</h2></div>
   <div class="tl">
-    <div class="ev"><span class="y">遠古</span><span class="t">阿瑪拉的書吏王抹去太多名字，連人們怎麼耕種河岸都忘了；下一次大旱，古國沒有撐過去</span></div>
+    <div class="ev"><span class="y">遠古</span><span class="t">阿瑪拉亡於幾場疊在一起的災難：書吏王抹去了上一次大旱的記錄；火山灰遮日三年；河水改道；存放衡之書副本的神殿被焚。沒人知道哪一場是致命的</span></div>
     <div class="ev"><span class="y">聖曆元年</span><span class="t">倖存的書吏北上，發現白鹽能書寫名冊，創立聖名教會</span></div>
     <div class="ev erase"><span class="y">約三百年前</span><span class="t">聖女伊莎抹去自己的名字，讓兩軍忘了為誰而戰。名冊裡沒有她，是民謠讓她活了下來</span></div>
     <div class="ev"><span class="y">948</span><span class="t">艾瑟島國與教會決裂，禁止唸誦死者的名字</span></div>
@@ -145,6 +165,44 @@ tr:last-child td{border-bottom:0}
 </section>
 
 <section>
+  <div><p class="eyebrow">預言</p><h2>一半是種下的，一半沒有人知道</h2></div>
+  <div class="prophecy">
+    <span class="unknown">鹽山開口之日，</span>
+    <span class="planted">南方的歌者到來；</span>
+    <span class="planted">被奪走的名字將被歸還，</span>
+    <span class="disputed">而北方將要流血。</span>
+  </div>
+  <div class="rules">
+    <div class="rule"><b style="color:var(--gold)">金色：種下的</b>聖歌院三百年前派人混入北境傳唱，為日後的聖歌者鋪路。</div>
+    <div class="rule"><b style="color:var(--blue)">藍色：沒有人知道</b>出自礦工最古老的工作歌。第三幕鹽山真的裂開了，到結局都不揭曉出處。</div>
+    <div class="rule"><b style="color:var(--red)">紅色：說法矛盾</b>有人說是警告，有人說是後人加的。一個北境少年信了它，刺殺了公爵。</div>
+    <div class="rule"><b>諾亞的未來</b>也不完全可靠：那是「一種」未來，不是「唯一」的未來。</div>
+  </div>
+</section>
+
+<section>
+  <div><p class="eyebrow">多版本</p><h2>同一件事，沒有一個版本全對</h2></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>卡爾斯之火</th><th>說法</th></tr></thead>
+    <tbody>
+      <tr><td>王后</td><td>「我嚇壞了，我只是不想讓任何人看見陛下那個樣子。」</td></tr>
+      <tr><td>葛雷</td><td>「她說『我不要任何人記得今天』。我們都聽懂了。」</td></tr>
+      <tr><td>名冊院記錄</td><td>卡爾斯村因瘟疫焚村淨化，無倖存者。</td></tr>
+      <tr><td>抹除簿原文</td><td class="secret">卡爾斯村，四十七戶。焚於王后近衛之手。倖存一女童，送往聖歌院。</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>北境屠殺</th><th>說法</th></tr></thead>
+    <tbody>
+      <tr><td>公爵</td><td>「那是氣話。我從來沒有下過命令。」</td></tr>
+      <tr><td>騎士長奧斯溫</td><td>「他說了那句話，然後看著我們。沒有人說不。」</td></tr>
+      <tr><td>托爾</td><td>「赦免令還貼在牆上的那天晚上，他們來了。」</td></tr>
+      <tr><td>名冊院記錄</td><td>北境暴民於冬季散去，無傷亡記錄。</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
   <div><p class="eyebrow">計中計</p><h2>每一方都有表面的計畫，和真正的計畫</h2></div>
   <div class="tablewrap"><table>
     <thead><tr><th>誰</th><th>對主角團說的</th><th>真正的計畫</th><th>為什麼說得通</th></tr></thead>
@@ -152,7 +210,7 @@ tr:last-child td{border-bottom:0}
       <tr><td>院長瑪格達</td><td>「保護她，送她到王都。」</td><td class="secret">讓希雅打開名冊，聖歌院取代名冊院</td><td>聖歌者世代被消耗，她們想奪回命運</td></tr>
       <tr><td>大書記長瑟伊恩</td><td>「我只想要和平。」</td><td class="secret">大遺忘：重演伊莎的奇蹟</td><td>他相信伊莎證明了遺忘能終止戰爭</td></tr>
       <tr><td>王后伊莎蓓爾</td><td>「我只想保護我的孩子。」</td><td class="secret">抹去兒子出身的疑點；失敗就逃往艾瑟</td><td>繼承戰爭的敗者，孩子活不下來</td></tr>
-      <tr><td>昂德魯公爵</td><td>「我要改革這個國家。」</td><td class="secret">以白鹽斷供逼名冊院就範</td><td>能幹的改革者，卻是屠殺的下令者</td></tr>
+      <tr><td>昂德魯公爵</td><td>「我要改革這個國家。」</td><td class="secret">以白鹽斷供逼名冊院就範</td><td>能幹的改革者，也是屠殺的源頭。他沒能活到審判</td></tr>
       <tr><td>會長奧古斯特</td><td>「生意就是生意。」</td><td class="secret">兩邊下注，與名冊院合賣贖名券</td><td>沒有商會，就沒有軍餉和糧食</td></tr>
       <tr><td>神父安塞姆</td><td>「我會為你們禱告。」</td><td class="secret">妹妹被挾持，為刺客開門，卻暗中救下希雅的日記</td><td>他膽小，也善良</td></tr>
     </tbody>
@@ -167,7 +225,7 @@ tr:last-child td{border-bottom:0}
       <tr><td>凱倫</td><td>在泥地裡一絲不苟地練習騎士禮儀</td><td>一輩子只是拿錢辦事的劍</td><td class="secret">他崇拜的公爵，一句話害死了他父親</td></tr>
       <tr><td>希雅</td><td>把自己的名字一針一針縫進袖口</td><td>讓別人失望</td><td class="secret">卡爾斯之火唯一的倖存者</td></tr>
       <tr><td>薇菈</td><td>為一道公式決鬥，戴著銀鼻尖</td><td>不得不和人相處</td><td class="secret">算出沉默之海一年內潰堤</td></tr>
-      <tr><td>葛雷</td><td>什麼都要數；聞不得鹽醃肉</td><td>自己做決定</td><td class="secret">把王后的一句話當成了燒村的命令</td></tr>
+      <tr><td>葛雷<span class="dead">死於聖燭之夜</span></td><td>什麼都要數；聞不得鹽醃肉</td><td>自己做決定</td><td class="secret">把王后的一句話當成了燒村的命令</td></tr>
       <tr><td>莉茲</td><td>談生意精明，選衣服選一個下午</td><td>選錯</td><td class="secret">握有贖名券的黑帳</td></tr>
       <tr><td>諾亞</td><td>手臂上寫滿陌生人的名字</td><td>再看一次一切毀掉</td><td class="secret">來自崩潰後的未來</td></tr>
       <tr><td>托爾</td><td>每天向北門的頭顱說「早，老哥」</td><td>被當成瘋子</td><td class="secret">第一個喊出「聖女轉世」的人</td></tr>
@@ -184,8 +242,8 @@ tr:last-child td{border-bottom:0}
   <div class="acts">
     <div class="act"><div class="h"><b>序章</b><span>春</span></div><div><p class="epi">「那個春天，沒有人知道一份護送委託會改變一個王國的記憶。」</p><p>八人各一段短序章，只有日常與心結。</p></div></div>
     <div class="act"><div class="h"><b>旅途</b><span>春→秋</span></div><div><p class="epi">「他們說那年冬天什麼都沒發生。那麼，我的兄弟是怎麼死的？」</p><p>護送希雅前往王都，走了半年。趕路、紮營、做菜、接委託；政治只從傳聞和敵方插曲裡滲進來。北境奉希雅為聖女轉世，托爾第一個喊出口。</p><p class="key">據點建立 · 祝福的代價 · 北境記得、南方遺忘 · 第一道裂隙</p></div></div>
-    <div class="act"><div class="h"><b>王都</b><span>冬</span></div><div><p class="epi">「那一夜，殺人的不是士兵。是麵包師、鄰居、唱詩班的孩子。」</p><p>計中計逐層翻開，同伴互相猜疑。婚宴端上一盤白鹽，那是屠殺的信號。凱倫擊倒仇人，才知道父親的遺言是假的。立名禮上，希雅第一次說「我不想」。</p><p class="key">聖燭之夜 · 立名禮 · 名冊碎裂</p></div></div>
-    <div class="act"><div class="h"><b>裂隙</b><span>冬→春</span></div><div><p class="epi">「我見過這個村子。在我的世界裡，它已經沒有名字了。」</p><p>八人散落在八個未來，各是一派理念的極端。托爾的未來，是以希雅之名打了一百年的聖戰。</p><p class="key">諾亞揭曉：未來由小失敗累積而成，每一環都能改變</p></div></div>
+    <div class="act"><div class="h"><b>王都</b><span>冬</span></div><div><p class="epi">「那一夜，殺人的不是士兵。是麵包師、鄰居、唱詩班的孩子。」</p><p>計中計逐層翻開，同伴互相猜疑。婚宴端上一盤白鹽，那是屠殺的信號。凱倫擊倒仇人，才知道父親的遺言是假的。葛雷第一次拒絕命令，獨自守住側門讓希雅逃走；天亮時，人們發現他數到了第四百一十二。立名禮上，希雅第一次說「我不想」。</p><p class="key">聖燭之夜 · 葛雷之死 · 立名禮 · 名冊碎裂</p></div></div>
+    <div class="act"><div class="h"><b>裂隙</b><span>冬→春</span></div><div><p class="epi">「我見過這個村子。在我的世界裡，它已經沒有名字了。」</p><p>八人散落在八個未來，各是一派理念的極端。托爾的未來，是以希雅之名打了一百年的聖戰。希雅代替葛雷走進他的未來，對那個數著步數的騎士說：「我原諒你，但我要你記得。」回到現在，公爵已在出庭前被一個相信預言的北境少年刺殺。</p><p class="key">諾亞揭曉：未來由小失敗累積而成，每一環都能改變 · 公爵之死</p></div></div>
     <div class="act"><div class="h"><b>月下</b><span>春分滿月</span></div><div><p>在名冊院地下找到抹除簿，面對三百年被抹去的記憶聚成的「無名者」。</p></div></div>
   </div>
 </section>
@@ -196,9 +254,24 @@ tr:last-child td{border-bottom:0}
     <div class="end"><span class="tag">瑟伊恩的路</span><b>抹去一切</b><p>和平，但所有罪行都沒發生過。</p></div>
     <div class="end"><span class="tag">托爾一度想走的路</span><b>恢復一切</b><p>正義，但百年仇恨同時回來。</p></div>
     <div class="end"><span class="tag">院長與預言的路</span><b>奉希雅為聖女</b><p>回聲之谷：以她為名的百年聖戰。</p></div>
-    <div class="end pick"><span class="tag">主角團的路</span><b>把名字還給唸它的人</b><p>從抹除簿裡把名字一個一個唸出來，還給活著的人；瑪莉安唱完伊莎之歌。希雅失去幾乎全部記憶，同伴每晚把她的故事講還給她。</p></div>
+    <div class="end pick"><span class="tag">主角團的路</span><b>把名字還給唸它的人</b><p>從抹除簿裡把名字一個一個唸出來，還給活著的人；瑪莉安唱完伊莎之歌。希雅失去幾乎全部記憶，六個同伴每晚把她的故事講還給她。</p></div>
   </div>
 </section>
 
-<p class="foot">完整文字版見倉庫：bible/世界觀.md、bible/大綱.md。歷史素材的拆解過程見幕後底稿 references/創作底稿_歷史素材.md。</p>
+<section>
+  <div><p class="eyebrow">結局之後</p><h2>名字歸還了，然後呢？</h2></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>問題</th><th>後果</th><th>誰要面對</th></tr></thead>
+    <tbody>
+      <tr><td>白鹽</td><td>不再用來書寫名冊，價格崩跌；北境的第一個冬天就鬧饑荒</td><td>托爾，從復仇者變成談判者</td></tr>
+      <tr><td>王室的債</td><td>鹽稅收不上來，欠商會的債還不了</td><td>莉茲，用黑帳逼債主重談</td></tr>
+      <tr><td>王位</td><td>幼王的出身流言因記憶歸還而重新浮現；公爵已死</td><td>一個誰都不滿意的攝政會</td></tr>
+      <tr><td>歸來的記憶</td><td>有人要求審判，有人要求報復</td><td>唸名會：先說出記得的事，再決定怎麼辦</td></tr>
+      <tr><td>聖歌者</td><td>上百名失去記憶的聖歌者無處可去</td><td>據點成了她們的收容所</td></tr>
+    </tbody>
+  </table></div>
+  <p class="sub">北門的頭顱由托爾親手取下，葬進了鹽之大聖堂。</p>
+</section>
+
+<p class="foot">完整文字版見倉庫：bible/世界觀.md、bible/大綱.md。歷史素材的拆解過程見幕後底稿 references/創作底稿_歷史素材.md；方法依據見 references/馬丁的歷史方法.md。</p>
 </div>
